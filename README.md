@@ -1,7 +1,6 @@
 # xoad-load-tests
 XRoad load tests
 
-
 In script
 ${host} 					host 					Host of webservice (servername.fi)
 ${loopcount} 				loopcount				How many times test is run
@@ -23,17 +22,17 @@ In tests were used testservice https://github.com/petkivim/x-road-test-service. 
 
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:id="http://x-road.eu/xsd/identifiers" xmlns:xrd="http://x-road.eu/xsd/xroad.xsd">
     <SOAP-ENV:Header>
-        <xrd:client id:objectType="SUBSYSTEM">														// instance sending request
-            <id:xRoadInstance>FI-DEV</id:xRoadInstance>												// ${Instance}
-            <id:memberClass>GOV</id:memberClass>													// ${MemberClass}
-            <id:memberCode>123456-7</id:memberCode>													// ${MemberCode} 	${MemberCode_1} might be needed
-            <id:subsystemCode>TestClient</id:subsystemCode>											// ${Subsystemcode_client}
+        <xrd:client id:objectType="SUBSYSTEM">								// instance sending request
+            <id:xRoadInstance>FI-DEV</id:xRoadInstance>						// ${Instance}
+            <id:memberClass>GOV</id:memberClass>							// ${MemberClass}
+            <id:memberCode>123456-7</id:memberCode>							// ${MemberCode} ${MemberCode_1} might also needed
+            <id:subsystemCode>TestClient</id:subsystemCode>					// ${Subsystemcode_client}
         </xrd:client>
-        <xrd:service id:objectType="SERVICE">														// instance responding
-            <id:xRoadInstance>FI-DEV</id:xRoadInstance>												// ${Instance} (FI-DEV, FI-TEST etc.)
-            <id:memberClass>GOV</id:memberClass>													// ${MemberClass}	(GOV, ORG etc)
-            <id:memberCode>0245437-2</id:memberCode>												// ${MemberCode}	${MemberCode_2} might be needed
-            <id:subsystemCode>TestService</id:subsystemCode>										// ${Subsystemcode_service}
+        <xrd:service id:objectType="SERVICE">								// instance responding
+            <id:xRoadInstance>FI-DEV</id:xRoadInstance>						// ${Instance} (FI-DEV, FI-TEST etc.)
+            <id:memberClass>GOV</id:memberClass>							// ${MemberClass}	(GOV, ORG etc)
+            <id:memberCode>0245437-2</id:memberCode>						// ${MemberCode}	${MemberCode_2} might be needed
+            <id:subsystemCode>TestService</id:subsystemCode>				// ${Subsystemcode_service}
             <id:serviceCode>testService</id:serviceCode>												
             <id:serviceVersion>v1</id:serviceVersion>
         </xrd:service>
@@ -44,8 +43,8 @@ In tests were used testservice https://github.com/petkivim/x-road-test-service. 
     <SOAP-ENV:Body>
         <ns1:testService xmlns:ns1="http://test.x-road.fi/producer">
             <ns1:request>
-                <ns1:responseBodySize>25</ns1:responseBodySize>										// responce Body size
-                <ns1:responseAttachmentSize>0</ns1:responseAttachmentSize>							// responce Attachment size
+                <ns1:responseBodySize>25</ns1:responseBodySize>				// responce Body size
+                <ns1:responseAttachmentSize>0</ns1:responseAttachmentSize>	// responce Attachment size
             </ns1:request>
         </ns1:testService>
     </SOAP-ENV:Body>

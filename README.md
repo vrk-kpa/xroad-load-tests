@@ -1,4 +1,3 @@
-# xoad-load-tests
-XRoad load tests
+# X-Road Load Tests
 
-Xroad loadtest scripts used for testing Palveluväylä are stored here. More details from scripts can be found from project [Wiki pages](https://github.com/vrk-kpa/xroad-load-tests/wiki).
+X-Road loadtest scripts used for testing Palveluväylä are stored here. More details from scripts can be found from project [Wiki pages](https://github.com/vrk-kpa/xroad-load-tests/wiki).

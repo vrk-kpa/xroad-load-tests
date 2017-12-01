@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -34,13 +34,13 @@
           <elementProp name="rampup" elementType="Argument">
             <stringProp name="Argument.name">rampup</stringProp>
             <stringProp name="Argument.value">10</stringProp>
-            <stringProp name="Argument.desc">Ramp up users</stringProp>
+            <stringProp name="Argument.desc">Rump up users</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="threads" elementType="Argument">
             <stringProp name="Argument.name">threads</stringProp>
             <stringProp name="Argument.value">500</stringProp>
-            <stringProp name="Argument.desc">How many threads</stringProp>
+            <stringProp name="Argument.desc">How many treats</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="MemberName" elementType="Argument">
@@ -111,12 +111,12 @@
         </elementProp>
         <stringProp name="HTTPSampler.domain">${host}</stringProp>
         <stringProp name="HTTPSampler.port">${portno}</stringProp>
-        <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-        <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
         <stringProp name="HTTPSampler.protocol"></stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path">${path}</stringProp>
         <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+        <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
       </ConfigTestElement>
       <hashTree/>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="TG50 - 8K  Local" enabled="false">
@@ -134,17 +134,18 @@
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -194,8 +195,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -204,8 +203,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="TestPlan.comments">Sanomankoko 10K</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -241,10 +241,14 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
               <sampleCount>true</sampleCount>
             </value>
           </objProp>
-          <stringProp name="filename">C:\Workspace\Palveluvayla\aggregate_1_500M_local_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}.csv</stringProp>
+          <stringProp name="filename">../logs/runs/aggregate_1_500M_local_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -281,7 +285,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <stringProp name="uploadToken">${loadsoftoken}</stringProp>
           <stringProp name="storeDir">C:\Workspace\Palveluvayla\Results\29_1\</stringProp>
           <stringProp name="color">none</stringProp>
-          <stringProp name="title">TG 49 8k_local_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}</stringProp>
+          <stringProp name="title">TG 50 8k_local_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}</stringProp>
           <boolProp name="useOnline">true</boolProp>
         </kg.apc.jmeter.reporters.LoadosophiaUploader>
         <hashTree/>
@@ -317,18 +321,19 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -387,8 +392,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">{timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -397,8 +400,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">{timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomankoko 10K</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -442,6 +446,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1011,18 +1019,19 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -1081,8 +1090,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -1091,8 +1098,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomankoko 10K</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -1136,6 +1144,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1208,12 +1220,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -1233,6 +1245,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG53 Sanomakoko 50K" enabled="false">
@@ -1278,8 +1291,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -1288,8 +1299,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -1333,6 +1345,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1405,12 +1421,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -1430,6 +1446,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG54 Sanomakoko 100K" enabled="false">
@@ -1475,8 +1492,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -1485,8 +1500,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -1530,6 +1546,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1665,12 +1685,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -1690,6 +1710,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG55 Sanomakoko 100K" enabled="false">
@@ -1735,8 +1756,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -1745,8 +1764,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 100K</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -1790,6 +1810,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1862,12 +1886,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -1887,6 +1911,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG56 Sanomakoko 500K" enabled="false">
@@ -1932,8 +1957,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -1942,8 +1965,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -1987,6 +2011,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -2430,12 +2458,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -2455,6 +2483,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG57 Sanomakoko 500K" enabled="false">
@@ -2500,8 +2529,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -2510,8 +2537,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko 500K</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -2555,6 +2583,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -2627,12 +2659,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -2652,6 +2684,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG58 Sanomakoko 1M" enabled="false">
@@ -2697,8 +2730,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -2707,8 +2738,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -2752,6 +2784,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -3027,12 +3063,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -3052,6 +3088,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG59 Sanomakoko 1M" enabled="false">
@@ -3097,8 +3134,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -3107,8 +3142,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 1M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -3152,6 +3188,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -3228,12 +3268,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -3253,6 +3293,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG60 Sanomakoko 5M" enabled="false">
@@ -3298,8 +3339,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -3308,8 +3347,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -3353,6 +3393,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -3628,12 +3672,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -3653,6 +3697,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG61 Sanomakoko 5M" enabled="false">
@@ -3698,8 +3743,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -3708,8 +3751,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments">Sanomakoko 5M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -3753,6 +3797,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -3825,12 +3873,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -3850,6 +3898,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG61 Sanomakoko 10M" enabled="false">
@@ -3895,8 +3944,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -3905,8 +3952,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko50M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -3950,6 +3998,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -4085,12 +4137,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -4110,6 +4162,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG55 Sanomakoko10M" enabled="false">
@@ -4155,8 +4208,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -4165,8 +4216,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko10M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -4210,6 +4262,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -4282,12 +4338,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -4307,6 +4363,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG64 Sanomakoko 50M" enabled="false">
@@ -4352,8 +4409,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -4362,8 +4417,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko50M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -4407,6 +4463,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -4514,12 +4574,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -4539,6 +4599,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG65 Sanomakoko 50M" enabled="false">
@@ -4584,8 +4645,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -4594,8 +4653,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko50M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -4639,6 +4699,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -4711,12 +4775,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -4736,6 +4800,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG66 Sanomakoko100M" enabled="false">
@@ -4781,8 +4846,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -4791,8 +4854,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko100M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -4836,6 +4900,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -4922,12 +4990,12 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${path}</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </ConfigTestElement>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
@@ -4947,6 +5015,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <collectionProp name="CookieManager.cookies"/>
           <stringProp name="TestPlan.comments">Sanomankoko</stringProp>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TG67 Sanomakoko100M" enabled="false">
@@ -4992,8 +5061,6 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
           <stringProp name="HTTPSampler.path">test-service-0.0.2-SNAPSHOT/Endpoint</stringProp>
@@ -5002,8 +5069,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">${timeout}</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">${timeout}</stringProp>
           <stringProp name="TestPlan.comments"> Sanomakoko100M</stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
@@ -5047,6 +5115,10 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+          <elementProp name="arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -5123,12 +5195,16 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         <stringProp name="filename">../logs/runs/aggregate_summary_local.csv</stringProp>
       </ResultCollector>
       <hashTree/>
-      <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+      <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="false">
         <stringProp name="DurationAssertion.duration">${timeout}</stringProp>
         <stringProp name="Assertion.scope">all</stringProp>
       </DurationAssertion>
       <hashTree/>
       <kg.apc.jmeter.reporters.LoadosophiaUploader guiclass="kg.apc.jmeter.reporters.LoadosophiaUploaderGui" testclass="kg.apc.jmeter.reporters.LoadosophiaUploader" testname="jp@gc - Loadosophia.org Uploader" enabled="false">
+        <elementProp name="arguments" elementType="Arguments">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="classname">kg.apc.jmeter.reporters.LoadosophiaClient</stringProp>
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -5162,7 +5238,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         </objProp>
         <stringProp name="filename"></stringProp>
         <stringProp name="project">Palveluvayla</stringProp>
-        <stringProp name="uploadToken">LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQ0KTUdJQ0FRQUNFUUNIcWNabzNSbkRsN0tQendOeGFteFZBZ01CQUFFQ0VBNy9MdHFGUkpXWk85Q1NKZXAxQm5rQw0KQ1FEZVdRejNiTTB2blFJSkFKd3lHRSt1di80WkFna0FscUxlRmdLd1FFRUNDQnB4WktwQXhHSXBBZ2hWS1pIQg0KcXNXTUJRPT0NCi0tLS0tRU5EIFJTQSBQUklW</stringProp>
+        <stringProp name="uploadToken">${loadsoftoken}</stringProp>
         <stringProp name="storeDir">../logs/Loadsof/</stringProp>
         <stringProp name="color">none</stringProp>
         <stringProp name="title">TG_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}.jtl</stringProp>
@@ -5204,7 +5280,7 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
         <stringProp name="filename">../logs/runs/7_10k_users_${__time(dd-MM-yyyy&apos;_T_&apos;HH:mm)}.csv</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="MonitorHealthVisualizer" testclass="ResultCollector" testname="Monitor Results" enabled="false">
+      <ResultCollector guiclass="ObsoleteGui" testclass="ResultCollector" testname="Monitor Results" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -5313,5 +5389,9 @@ xmlns:prod=&quot;http://test.x-road.fi/producer&quot;&gt;&#xd;
       <Summariser guiclass="SummariserGui" testclass="Summariser" testname="Generate Summary Results" enabled="false"/>
       <hashTree/>
     </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
   </hashTree>
 </jmeterTestPlan>

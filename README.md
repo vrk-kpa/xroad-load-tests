@@ -1,25 +1,30 @@
-# xoad-load-tests
-XRoad load tests
+# X-Road Load Tests
 
-In script
-${host} 					        host 					        Host of webservice (servername.fi)
-${loopcount} 			        loopcount				      How many times test is run
-${portno}    			        portno					      Port of service		(80, 8080 etc.)
-${rampup}					        rampup 					      Ramp up users	
-${threads}				        threads					      How many treats
-${MemberName}			        MemberName				    Customer ID		()
-${MemberClass} 			      MemberClass				    CustomerClass  	(GOV, ORG etc..)
-${MemberCode}				      MemberCode				    CustomerCode	(123456-7 ....) can be found from security server config
-${Subsystemcode_client} 	Subsystemcode_client 	Subsystemcode client
-${Subsystemcode_service} 	Subsystemcode_service Subsystemcode service
-${path} 					        path					        End path of the servername (test-service-0.0.1/Endpoint)
-${Instance} 				      Instance  				    X Road Instance
-${timer}	 				        timer 					      timer
-${timeout} 					      timeout 				      Timeout value
-${loadsoftoken} 			    loadsoftoken 			    Loadsofia token
+X-Road loadtest scripts used for testing Palveluväylä are stored here. More details from scripts can be found from project [Wiki pages](https://github.com/vrk-kpa/xroad-load-tests/wiki).
+
+
+# xoad-load-tests
+>XRoad load tests
+
+>Variables in the script
+>${host} 					        host 					        Host of webservice (servername.fi)
+>${loopcount} 			        loopcount				      How many times test is run
+>${portno}    			        portno					      Port of service		(80, 8080 etc.)
+>${rampup}					        rampup 					      Ramp up users	
+>${threads}				        threads					      How many treats
+>${MemberName}			        MemberName				    Customer ID		()
+>${MemberClass} 			      MemberClass				    CustomerClass  	(GOV, ORG etc..)
+>${MemberCode}				      MemberCode				    CustomerCode	(123456-7 ....) can be found from security server config
+>${Subsystemcode_client} 	Subsystemcode_client 	Subsystemcode client
+>${Subsystemcode_service} 	Subsystemcode_service Subsystemcode service
+>${path} 					        path					        End path of the servername (test-service-0.0.1/Endpoint)
+>${Instance} 				      Instance  				    X Road Instance
+>${timer}	 				        timer 					      timer
+>${timeout} 					      timeout 				      Timeout value
+>${loadsoftoken} 			    loadsoftoken 			    Loadsofia token
 
 In tests were used testservice https://github.com/petkivim/x-road-test-service. More detais from it can be found from this pages
-
+´´´ xml
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:id="http://x-road.eu/xsd/identifiers" xmlns:xrd="http://x-road.eu/xsd/xroad.xsd">
     <SOAP-ENV:Header>
         <xrd:client id:objectType="SUBSYSTEM">														// instance sending request
@@ -49,3 +54,5 @@ In tests were used testservice https://github.com/petkivim/x-road-test-service. 
         </ns1:testService>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
+
+´´´
